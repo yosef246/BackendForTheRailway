@@ -14,7 +14,7 @@ const port = process.env.PORT || 8080;
 
 const allowedOrigins = [
   "http://localhost:3000", // לוקאלי
-  "https://party-cards-with-react-node-a6kxss4ga-yosef246s-projects.vercel.app", // פרודקשן
+  "https://party-cards-with-react-node-js.vercel.app", // פרודקשן
 ];
 //מונע בעיית כורס
 app.use(
@@ -53,6 +53,8 @@ app.use("/api/auth/", newUserRouter);
 app.use("/api/post/", postRouter);
 app.use("/api/tag/", tagRouter);
 app.use("/api/payment/", paymentRouter);
+
+app.get("/test", (req, res) => res.json({ status: "Server works ✅" }));
 
 app.listen(port, "0.0.0.0", () => {
   console.log(`Example run on port ${port}!`);
