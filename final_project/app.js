@@ -37,6 +37,20 @@ app.use(
   })
 );
 
+app.options(
+  "*",
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (origin.includes("vercel.app")) return callback(null, true);
+      return callback(new Error("CORS blocked"), false);
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
 //env מאפשר לי להשתמש בערכים שנמצאים בקובץ
 dotenv.config();
 
