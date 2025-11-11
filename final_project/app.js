@@ -49,6 +49,10 @@ app.use(cookieParser());
 //מתחבר למונגו שלי
 connectToMongoDB();
 
+app.get("/test", (req, res) => {
+  res.json({ status: "Server is working ✅" });
+});
+
 app.use("/api/auth/", newUserRouter);
 app.use("/api/post/", postRouter);
 app.use("/api/tag/", tagRouter);
